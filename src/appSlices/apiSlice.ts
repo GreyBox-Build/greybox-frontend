@@ -1,0 +1,68 @@
+// Import the RTK Query methods from the React-specific entry point
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+// Define our single API slice object
+export const apiSlice = createApi({
+  reducerPath: "api",
+  refetchOnReconnect: true,
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_BASE_URL,
+    prepareHeaders: (headers, { endpoint }) => {
+      const token = localStorage.getItem("access_token");
+
+      if (
+        token &&
+        endpoint !== "createUser" &&
+        endpoint !== "obtainToken" &&
+        endpoint !== "forgetPassword" &&
+        endpoint !== "resetPassword"
+      ) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
+  tagTypes: ["Staffs", "Zones", "Areas", "Branches"],
+  endpoints: (builder) => ({
+    createUser: builder.mutation({
+      query: (user) => ({
+        url: "/user/register",
+        method: "POST",
+        body: user,
+      }),
+    }),
+    obtainToken: builder.mutation({
+      query: (user) => ({
+        url: "/user/login",
+        method: "POST",
+        body: user,
+      }),
+    }),
+    getAuthUser: builder.query({
+      query: () => ({
+        url: "/auth/user",
+      }),
+    }),
+    forgetPassword: builder.mutation({
+      query: (user) => ({
+        url: "/token/forget-password",
+        method: "POST",
+        body: user,
+      }),
+    }),
+    resetPassword: builder.mutation({
+      query: (user) => ({
+        url: "/token/reset-password",
+        method: "POST",
+        body: user,
+      }),
+    }),
+  }),
+});
+
+export const {
+  useCreateUserMutation,
+  useObtainTokenMutation,
+  useGetAuthUserQuery,
+  useForgetPasswordMutation,
+  useResetPasswordMutation,
+} = apiSlice;
