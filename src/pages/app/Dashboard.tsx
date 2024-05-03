@@ -69,7 +69,7 @@ const Dashboard = () => {
                   : "0.00"}
               </p>
               <p className="text-[0.625rem] text-grey-1">
-                Last Updated {moment(personInfo?.UpdatedAt).toNow()}
+                Last Updated {moment(personInfo?.UpdatedAt).fromNow()}
               </p>
             </div>
 
