@@ -1,7 +1,9 @@
 import Navigation from "./home/Navigation";
 import Footer from "./home/Footer";
+import { useScrollToTop } from "../../utils/ScrollToTop";
 
 const PrivacyPolicy = () => {
+  useScrollToTop();
   return (
     <section>
       <section className=" bg-pink-1 pb-[69px] flex flex-col">

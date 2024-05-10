@@ -29,10 +29,7 @@ const Login = () => {
         navigate("/dashboard");
       }
     } catch (error: any) {
-      if (error?.status === 400) {
-        enqueueSnackbar("Invalid email or password", { variant: "success" });
-        return;
-      }
+      enqueueSnackbar(error?.data?.error, { variant: "success" });
     }
   };
   return (

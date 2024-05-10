@@ -61,8 +61,8 @@ const Dashboard = () => {
               </p>
               <p className="text-[2.125rem] font-[700]">
                 {personInfo?.currency}
-                {walletInfo?.accountBalance !== undefined
-                  ? parseFloat(walletInfo?.accountBalance)
+                {walletInfo?.availableBalance !== undefined
+                  ? parseFloat(walletInfo?.availableBalance)
                       .toFixed(2)
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")

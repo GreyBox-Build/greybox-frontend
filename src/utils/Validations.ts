@@ -51,6 +51,3 @@ export const sendBankSchema = z.object({
   amount_to_send: z.string().min(1, { message: "Enter amount to send" }),
 });
 
-// {
-//   "error": "password must have at least 8 characters, have at least a digit and at least an Upper case letter"
-// }

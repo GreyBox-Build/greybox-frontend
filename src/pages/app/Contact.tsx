@@ -8,6 +8,7 @@ import {
 import { HomeButton } from "../../components/buttons/HomeButton";
 import { ContactTextInput } from "../../components/inputs/ContactTextInput";
 import { ContactTextArea } from "../../components/inputs/ContactTextArea";
+import { useScrollToTop } from "../../utils/ScrollToTop";
 
 const Contact = () => {
   const ContactCard = ({
@@ -31,6 +32,7 @@ const Contact = () => {
       </div>
     );
   };
+  useScrollToTop();
   return (
     <section>
       <section className=" bg-pink-1 pb-[69px] flex flex-col">

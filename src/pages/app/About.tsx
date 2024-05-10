@@ -3,6 +3,7 @@ import Navigation from "./home/Navigation";
 import Footer from "./home/Footer";
 import { AboutLadyFlat, LightIcon } from "../../components/icons/Icons";
 import { HomeButton } from "../../components/buttons/HomeButton";
+import { useScrollToTop } from "../../utils/ScrollToTop";
 
 const About = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const About = () => {
       </section>
     );
   };
+  useScrollToTop();
   return (
     <section>
       <section className=" bg-pink-1 pb-[69px] flex flex-col">

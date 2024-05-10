@@ -24,7 +24,7 @@ root.render(
         horizontal: "center",
       }}
       hideIconVariant
-      autoHideDuration={10000}
+      autoHideDuration={5000}
       action={(snackbarId) => <SnackbarCloseButton snackbarId={snackbarId} />}
     >
       <App />

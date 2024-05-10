@@ -1,3 +1,4 @@
+import { useScrollToTop } from "../../../utils/ScrollToTop";
 import About from "./About";
 import Footer from "./Footer";
 import GetStarted from "./GetStarted";
@@ -9,6 +10,7 @@ import Testimonials from "./Testimonials";
 import WhyChoose from "./WhyChoose";
 
 const Home = () => {
+  useScrollToTop();
   return (
     <>
       <Navigation />

@@ -48,10 +48,7 @@ const SignUp = () => {
         navigate("/sign-in");
       }, 5000);
     } catch (error: any) {
-      if (error?.status === 400) {
-        enqueueSnackbar("Account is already existing", { variant: "success" });
-        return;
-      }
+      enqueueSnackbar(error?.data?.error, { variant: "success" });
     }
   };
 

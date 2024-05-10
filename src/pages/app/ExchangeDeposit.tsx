@@ -1,9 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CancelIcon, CopyWhite, QRCode } from "../../components/icons/Icons";
+import { CancelIcon, CopyWhite } from "../../components/icons/Icons";
 import AppLayout from "./AppLayout";
+import { useGetAuthUserQuery } from "../../appSlices/apiSlice";
+import QRCode from "qrcode.react";
+import { useCopyTextToClipboard } from "../../utils/Copy";
 
 const ExchangeDeposit = () => {
   const navigate = useNavigate();
+  const { currentData: userData } = useGetAuthUserQuery({});
+  const copyText = useCopyTextToClipboard();
   return (
     <AppLayout
       child={
@@ -19,15 +24,31 @@ const ExchangeDeposit = () => {
               Deposit Via Exchange
             </h2>
           </div>
-          <QRCode />
-          <p className=" text-orange-1 text-[1rem] font-[600] leading-[22px] text-center mt-[48px]">
+
+          <div className="box m-[auto] relative">
+            <QRCode value={userData?.data?.personal_details?.account_address} />
+            <img
+              src="/images/scanMe.svg"
+              alt=""
+              className="absolute left-[16px] bottom-[-45px]"
+            />
+          </div>
+          <p className=" text-orange-1 text-[1rem] font-[600] leading-[22px] text-center mt-[88px]">
             Deposit Address
           </p>
           <p className="text-black text-[0.875rem] leading-[22px] text-center mt-[22px]">
-            373iejbufygdbnfasuu73429087rgfnv bgt3002yhfbb
+            {userData?.data?.personal_details?.account_address}
           </p>
 
-          <button className=" bg-grey-2 p-[17px_91px] rounded-[48px] flex items-center gap-x-[10px] text-white text-[0.875rem] font-[700] m-[0_auto] mt-[41px]">
+          <button
+            className=" bg-grey-2 p-[17px_91px] rounded-[48px] flex items-center gap-x-[10px] text-white text-[0.875rem] font-[700] m-[0_auto] mt-[41px]"
+            onClick={() =>
+              copyText(
+                userData?.data?.personal_details?.account_address,
+                "Wallet address copied"
+              )
+            }
+          >
             Copy Address <CopyWhite />
           </button>
 
