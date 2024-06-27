@@ -8,11 +8,13 @@ import {
   SnackbarCloseButton,
   StyledMaterialDesignContent,
 } from "./utils/SnackbarProvider";
+// import { MoonPayProvider } from "@moonpay/moonpay-react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
+  // <MoonPayProvider apiKey="pk_test_5CfXVqDxiCHY45HdTEUlmhOQhsws4" debug>
   <Provider store={store}>
     <SnackbarProvider
       Components={{
@@ -30,4 +32,5 @@ root.render(
       <App />
     </SnackbarProvider>
   </Provider>
+  // </MoonPayProvider>
 );

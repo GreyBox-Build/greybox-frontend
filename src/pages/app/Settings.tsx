@@ -35,7 +35,7 @@ const Settings = () => {
                 <p className="text-white text-[1rem] leading-[22px]">
                   Lorem Ipsum
                 </p>
-                <p className="flex items-center gap-x-[17px] text-white text-[0.75rem] leading-[12px]">
+                <p className="flex items-center gap-x-[17px] text-white text-[0.875rem] leading-[12px]">
                   oifoo4i3049420fjrjnvzn wi3904 <CopyWhite />
                 </p>
               </div>

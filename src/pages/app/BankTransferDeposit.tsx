@@ -8,7 +8,7 @@ import { useOnrampQuery } from "../../appSlices/apiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { depositViaMobileSchema } from "../../utils/Validations";
 
-const MobileMoneyDeposit = () => {
+const BankTransferDeposit = () => {
   const navigate = useNavigate();
 
   const { currentData: onrampInfo } = useOnrampQuery({});
@@ -22,7 +22,7 @@ const MobileMoneyDeposit = () => {
   const handleDepositViaMobileMoney = (data: any) => {
     const { amount } = data;
     window.open(
-      `https://pay.fonbnk.com/?source=${process.env.REACT_APP_SOURCE_PARAM}&asset=${onrampInfo?.data?.asset}&country=${onrampInfo?.data?.country}&provider=mobile_money&amount=${amount}&network=${onrampInfo?.data?.network}&address=${onrampInfo?.data?.wallet_address}&freezeWallet=1&freezeNetwork=1&freezeAmount=1&redirectUrl=${process.env.REACT_APP_FRONTEND_BASE_URL}/dashboard/{status}`,
+      `https://sandbox-pay.fonbnk.com/?source=${process.env.REACT_APP_SOURCE_PARAM}&asset=${onrampInfo?.data?.asset}&country=${onrampInfo?.data?.country}&provider=bank_transfer&amount=${amount}&network=${onrampInfo?.data?.network}&address=${onrampInfo?.data?.wallet_address}&freezeWallet=1&freezeNetwork=1&freezeAmount=1&redirectUrl=${process.env.REACT_APP_FRONTEND_BASE_URL}/dashboard/{status}`,
       "_self"
     );
   };
@@ -35,7 +35,7 @@ const MobileMoneyDeposit = () => {
               <CancelIcon />
             </span>
             <h2 className=" text-black text-[1.5rem] font-[600]">
-              Deposit Via Mobile Money
+              Deposit Via Bank Transfer
             </h2>
           </div>
           <form
@@ -66,4 +66,4 @@ const MobileMoneyDeposit = () => {
   );
 };
 
-export default MobileMoneyDeposit;
+export default BankTransferDeposit;

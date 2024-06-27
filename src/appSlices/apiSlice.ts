@@ -25,33 +25,50 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     createUser: builder.mutation({
       query: (user) => ({
-        url: "/user/register",
+        url: "/v2/user/register",
         method: "POST",
         body: user,
       }),
     }),
     obtainToken: builder.mutation({
       query: (user) => ({
-        url: "/user/login",
+        url: "/v1/user/login",
         method: "POST",
         body: user,
       }),
     }),
+    offramp: builder.mutation({
+      query: (details) => ({
+        url: "/v1/transaction/off-ramp",
+        method: "POST",
+        body: details,
+      }),
+    }),
     getAuthUser: builder.query({
       query: () => ({
-        url: "/auth/user",
+        url: "/v1/auth/user",
+      }),
+    }),
+    onramp: builder.query({
+      query: () => ({
+        url: "/v1/transaction/on-ramp",
+      }),
+    }),
+    getTransaction: builder.query({
+      query: ({ category, pageSize }) => ({
+        url: `/v1/transaction?category=${category}&pageSize=${pageSize}`,
       }),
     }),
     forgetPassword: builder.mutation({
       query: (user) => ({
-        url: "/token/forget-password",
+        url: "/v1/token/forget-password",
         method: "POST",
         body: user,
       }),
     }),
     resetPassword: builder.mutation({
       query: (user) => ({
-        url: "/token/reset-password",
+        url: "/v1/token/reset-password",
         method: "POST",
         body: user,
       }),
@@ -63,6 +80,33 @@ export const {
   useCreateUserMutation,
   useObtainTokenMutation,
   useGetAuthUserQuery,
+  useOnrampQuery,
   useForgetPasswordMutation,
   useResetPasswordMutation,
+  useOfframpMutation,
+  useGetTransactionQuery,
 } = apiSlice;
+
+// {
+//   "data": {
+//       "nextPage": "",
+//       "prevPage": "",
+//       "result": [
+//           {
+//               "address": "0xcad5797bbe1b64282c316adbc9723b832d83919c",
+//               "amount": "3",
+//               "blockNumber": 26297631,
+//               "chain": "celo-mainnet",
+//               "counterAddress": "0x5aa4b6e1a09afa5d9b639752f21dad6965798dab",
+//               "hash": "0x8c434bd29a77764a110dbcae0c34edfeae2341ebfaaab153de852a8614cc1bc9",
+//               "timestamp": 1719159354000,
+//               "tokenAddress": "0x765de816845861e75a25fca122bb6898b8b1282a",
+//               "transactionIndex": 4,
+//               "transactionSubtype": "incoming",
+//               "transactionType": "fungible"
+//           }
+//       ]
+//   },
+//   "errors": false,
+//   "status": "retrieved transactions successfully"
+// }

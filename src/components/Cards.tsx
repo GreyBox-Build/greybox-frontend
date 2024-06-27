@@ -12,7 +12,7 @@ export type MenuProps = {
 };
 export const Menu = ({ icon, label, onClick }: MenuProps) => (
   <div onClick={onClick} className="flex flex-col items-center">
-    {icon} <p className="text-[0.75rem] text-black">{label}</p>
+    {icon} <p className="text-[0.875rem] text-black">{label}</p>
   </div>
 );
 
@@ -39,7 +39,7 @@ export const QuickLink = ({
 };
 
 export const DateHead = ({ date }: { date: string }) => (
-  <div className="text-[0.75rem] leading-[12px] text-black-3 mb-[8px] mt-[20px] ml-[24px]">
+  <div className="text-[0.875rem] leading-[12px] text-black-3 mb-[8px] mt-[20px] ml-[24px]">
     {date}
   </div>
 );
@@ -70,12 +70,14 @@ export const DetailsCard = ({
     >
       <div className="flex items-center gap-x-[16px]">
         <TransferIcon />
-        <div>
+        <div className="flex flex-col gap-y-[5px]">
           <p className="text-[0.875rem] leading-[18px] text-black-2">{label}</p>
-          <p className="text-[0.75rem] leading-[12px] text-black-3">{time}</p>
+          <p className="text-[0.875rem] leading-[12px] text-black-3">{time}</p>
         </div>
       </div>
-      <div className="text-[0.75rem] leading-[12px] text-black-3">{amount}</div>
+      <div className="text-[0.875rem] leading-[12px] text-black-3">
+        {amount}
+      </div>
     </div>
   </section>
 );
@@ -93,7 +95,7 @@ export const PaymentDetailsCard = ({
     <div className="flex items-center justify-between">
       <div className="flex flex-col gap-x-[16px]">
         <p className="text-[0.875rem] leading-[18px] text-black-2">{text}</p>
-        <p className="text-[0.75rem] leading-[12px] text-black-3">{subText}</p>
+        <p className="text-[0.875rem] leading-[12px] text-black-3">{subText}</p>
       </div>
       <DeleteIcon onClick={deleteFunc} />
     </div>
@@ -119,12 +121,12 @@ export const NotificationsCard = ({
         <ToolIcon />
         <div className="flex flex-col gap-y-[6px]">
           <p className="text-[0.875rem] leading-[18px] text-black-2">{text}</p>
-          <p className="text-[0.75rem] leading-[12px] text-black-3">
+          <p className="text-[0.875rem] leading-[12px] text-black-3">
             {subText}
           </p>
         </div>
       </div>
-      <div className="text-[0.75rem] leading-[12px] text-black-3 min-w-fit">
+      <div className="text-[0.875rem] leading-[12px] text-black-3 min-w-fit">
         {date}
       </div>
     </div>
@@ -150,7 +152,7 @@ export const SettingsCard = ({
         {icon}
         <div className="flex flex-col gap-y-[6px]">
           <p className="text-[0.875rem] leading-[18px] text-black-2">{text}</p>
-          <p className="text-[0.75rem] leading-[12px] text-black-3">
+          <p className="text-[0.875rem] leading-[12px] text-black-3">
             {subText}
           </p>
         </div>
@@ -207,13 +209,13 @@ export const TransactionHistoryCard = ({
               {status}
             </span>
           </div>
-          <p className="text-[0.75rem] leading-[12px] text-black-3">
+          <p className="text-[0.875rem] leading-[12px] text-black-3">
             {channel}
           </p>
         </div>
       </div>
       <div className="flex flex-col gap-y-[12px]">
-        <p className="text-[0.75rem] leading-[12px] text-black-3 font-[700]">
+        <p className="text-[0.875rem] leading-[12px] text-black-3 font-[700]">
           {amount}
         </p>
         <p className="text-[0.625rem] leading-[10px] text-black-3">{time}</p>

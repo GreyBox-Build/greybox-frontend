@@ -51,3 +51,23 @@ export const sendBankSchema = z.object({
   amount_to_send: z.string().min(1, { message: "Enter amount to send" }),
 });
 
+export const depositViaMobileSchema = z.object({
+  amount: z
+    .string()
+    .refine((amount) => parseFloat(amount) !== 0, "Zero amount not allowed"),
+});
+
+export const withdrawViaMobileSchema = z.object({
+  amount: z
+    .string()
+    .refine(
+      (amount) => parseFloat(amount) >= 1406,
+      "Amount must not be less than 1406"
+    ),
+});
+
+export const withdrawPaymentSchema = z.object({
+  amount: z.string().min(1, { message: "Enter amount" }),
+  account_address: z.string().min(1, { message: "Address is required" }),
+  chain: z.string().min(1, { message: "Chain is required" }),
+});

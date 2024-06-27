@@ -38,7 +38,7 @@ const RecoverPassword = () => {
                 img={<LockOpen />}
               />
             </section>
-            <button className="text-[0.75rem] text-black-3 leading-[12px] mt-[12px] border-none bg-transparent">
+            <button className="text-[0.875rem] text-black-3 leading-[12px] mt-[12px] border-none bg-transparent">
               Show Password
             </button>
 

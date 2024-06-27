@@ -42,7 +42,7 @@ export const TextInput = ({
             {!isSmall && <span className=" w-fit">{img}</span>}
           </div>
           {error && (
-            <p className=" text-red-700 text-[0.75rem] mt-[-20px]">
+            <p className=" text-red-700 text-[0.875rem] mt-[8px]">
               {error.message}
             </p>
           )}
@@ -53,7 +53,7 @@ export const TextInput = ({
 };
 
 export const InputLabel = ({ text }: { text: string }) => (
-  <label htmlFor={text} className="text-[0.75rem] text-black-2 mb-[8px]">
+  <label htmlFor={text} className="text-[0.875rem] text-black-2 mb-[8px]">
     {text}
   </label>
 );
@@ -65,7 +65,7 @@ export const InputInfoLabel = ({
   title: string;
   value: string;
 }) => (
-  <div className="w-full rounded-[0px_0px_8px_8px] mt-[-5px] bg-orange-2 flex items-center justify-between p-[8px_22px] text-[0.75rem] text-black-2">
+  <div className="w-full rounded-[0px_0px_8px_8px] mt-[-5px] bg-orange-2 flex items-center justify-between p-[8px_22px] text-[0.875rem] text-black-2">
     <span>{title}</span> <span>{value}</span>
   </div>
 );

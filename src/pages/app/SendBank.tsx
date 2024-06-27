@@ -32,7 +32,9 @@ const SendBank = () => {
               Send Via Bank
             </h2>
           </div>
-          <p className="text-black-3 text-[0.75rem] text-center">(Bal $0.00)</p>
+          <p className="text-black-3 text-[0.875rem] text-center">
+            (Bal $0.00)
+          </p>
           <form className="mt-[29px] px-[24px] pb-[80px]">
             <section className="flex flex-col gap-y-[32px]">
               <div>

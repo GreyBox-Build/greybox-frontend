@@ -5,6 +5,7 @@ import { FormButton } from "../../components/buttons/FormButton";
 
 const DepositOption = () => {
   const navigate = useNavigate();
+
   return (
     <AppLayout
       child={
@@ -15,9 +16,9 @@ const DepositOption = () => {
             onClick={() => navigate("/deposit-via-mobile-money")}
           />
           <FlatButton
-            label="Deposit Via Paychant"
+            label="Deposit Bank Transfer"
             extraClass="bg-[transparent] mb-[8px]"
-            onClick={() => navigate("/deposit-via-paychant")}
+            onClick={() => navigate("/deposit-via-bank-transfer")}
           />
           <FlatButton
             label="Deposit Via Exchange"

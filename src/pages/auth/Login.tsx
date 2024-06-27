@@ -65,7 +65,7 @@ const Login = () => {
             </section>
             <Link
               to={"/forgot-password"}
-              className="text-[0.75rem] text-black-3 leading-[12px] mt-[12px]"
+              className="text-[0.875rem] text-black-3 leading-[12px] mt-[12px]"
             >
               Forgot Password?
             </Link>

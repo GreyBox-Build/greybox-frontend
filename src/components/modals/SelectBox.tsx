@@ -76,7 +76,7 @@ const SelectBox = ({
                       {list.name}
                     </p>
                     {list.code && (
-                      <p className="text-black-3 text-[0.75rem] leading-[12px]">
+                      <p className="text-black-3 text-[0.875rem] leading-[12px]">
                         {list.code}
                       </p>
                     )}

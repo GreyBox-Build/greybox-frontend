@@ -9,6 +9,7 @@ const AppLayout = ({ child }: { child: React.ReactNode }) => {
   const { isError } = useGetAuthUserQuery({});
   useEffect(() => {
     if (isError) {
+      localStorage.removeItem("access_token");
       navigate("/sign-in");
     }
   });
