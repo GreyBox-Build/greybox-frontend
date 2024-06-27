@@ -76,15 +76,27 @@ export const Send = () => (
 );
 
 export const SendQ = () => (
-  <img src="/images/sendq.png" alt="" className=" cursor-pointer" />
+  <img
+    src="/images/sendq.png"
+    alt=""
+    className=" cursor-pointer min-w-[40px] min-h-[40px] max-w-[40px] max-h-[40px]"
+  />
 );
 
 export const Deposit = () => (
-  <img src="/images/deposit.png" alt="" className=" cursor-pointer" />
+  <img
+    src="/images/deposit.png"
+    alt=""
+    className=" cursor-pointer w-[40px] h-[40px]"
+  />
 );
 
 export const Withdraw = () => (
-  <img src="/images/withdraw.png" alt="" className=" cursor-pointer" />
+  <img
+    src="/images/withdraw.png"
+    alt=""
+    className=" cursor-pointer w-[40px] h-[40px]"
+  />
 );
 
 export const Cards = () => (

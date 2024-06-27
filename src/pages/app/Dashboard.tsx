@@ -121,7 +121,7 @@ const Dashboard = () => {
               </p>
             </div>
 
-            <section className="w-full flex justify-between md:justify-center px-[51px] md:gap-x-[55px] mt-[15px]">
+            <section className="w-full flex justify-center px-[51px] gap-x-[55px] mt-[15px]">
               <QuickLink
                 icon={<Deposit />}
                 label="Deposit"
@@ -211,23 +211,24 @@ const Dashboard = () => {
                     );
                   }
                 )}
+
+              {isFetchingTransactions && (
+                <div className=" w-full flex justify-center items-center p-[20px_0]">
+                  <Oval
+                    height={50}
+                    width={50}
+                    color="#fff"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                    ariaLabel="oval-loading"
+                    secondaryColor="#22262B"
+                    strokeWidth={2}
+                    strokeWidthSecondary={2}
+                  />
+                </div>
+              )}
             </section>
-            {isFetchingTransactions && (
-              <div className=" w-full flex justify-center items-center p-[20px_0]">
-                <Oval
-                  height={50}
-                  width={50}
-                  color="#fff"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  ariaLabel="oval-loading"
-                  secondaryColor="#22262B"
-                  strokeWidth={2}
-                  strokeWidthSecondary={2}
-                />
-              </div>
-            )}
           </section>
         </div>
       }
