@@ -29,7 +29,10 @@ const Login = () => {
         navigate("/dashboard");
       }
     } catch (error: any) {
-      enqueueSnackbar(error?.data?.error, { variant: "success" });
+      enqueueSnackbar(
+        error?.data?.error ? error?.data?.error : "Connction failed!",
+        { variant: "success" }
+      );
     }
   };
   return (

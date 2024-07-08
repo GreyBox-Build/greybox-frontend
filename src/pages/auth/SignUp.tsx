@@ -54,7 +54,10 @@ const SignUp = () => {
         navigate("/sign-in");
       }, 5000);
     } catch (error: any) {
-      enqueueSnackbar(error?.data?.error, { variant: "success" });
+      enqueueSnackbar(
+        error?.data?.error ? error?.data?.error : "Connction failed!",
+        { variant: "success" }
+      );
     }
   };
 

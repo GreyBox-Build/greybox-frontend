@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <MoonPayProvider apiKey="pk_test_5CfXVqDxiCHY45HdTEUlmhOQhsws4" debug>
+  <MoonPayProvider apiKey={process.env.REACT_APP_MOONPAY_KEY!} debug>
     <Provider store={store}>
       <SnackbarProvider
         Components={{
