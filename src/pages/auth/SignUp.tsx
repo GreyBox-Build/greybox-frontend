@@ -15,13 +15,17 @@ import { countryData, currencyData } from "../../utils/Dummies";
 import { useForm } from "react-hook-form";
 import { createUserSchema } from "../../utils/Validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCreateUserMutation } from "../../appSlices/apiSlice";
+import {
+  useCreateUserMutation,
+  useGetChainsQuery,
+} from "../../appSlices/apiSlice";
 import { useSnackbar } from "notistack";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [openCurrency, setOpenCurrency] = useState<boolean>(false);
   const [openCountry, setOpenCountry] = useState<boolean>(false);
+  const [openChain, setOpenChain] = useState<boolean>(false);
   const [createUser, { isLoading }] = useCreateUserMutation();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -33,10 +37,12 @@ const SignUp = () => {
       password: "",
       currency: "",
       country: "",
+      chain: "",
       country_code: "",
     },
     resolver: zodResolver(createUserSchema),
   });
+  const { currentData: chains } = useGetChainsQuery({});
 
   const handleCreateUser = async (data: any) => {
     const updatedData = { ...data, country_code: getValues("country_code") };
@@ -110,6 +116,17 @@ const SignUp = () => {
               />
               <TextInput
                 control={control}
+                name="chain"
+                placeholder="Chain"
+                readOnly
+                type="text"
+                onClick={() => {
+                  setOpenChain(true);
+                }}
+                img={<DropDown />}
+              />
+              <TextInput
+                control={control}
                 name="password"
                 placeholder="Password"
                 type="password"
@@ -157,6 +174,17 @@ const SignUp = () => {
                 clearErrors("country");
               }}
               onClose={() => setOpenCountry(false)}
+            />
+            <SelectBox
+              state={openChain}
+              title="Select Chain"
+              placeholder="Search Chain"
+              childList={chains?.data === undefined ? [] : chains?.data}
+              onPickChild={(list: any) => {
+                setValue("chain", list?.chain);
+                clearErrors("country");
+              }}
+              onClose={() => setOpenChain(false)}
             />
           </form>
         </div>

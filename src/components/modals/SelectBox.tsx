@@ -1,5 +1,6 @@
 import { Modal } from "@mui/material";
 import { useState } from "react";
+import { changeFirstLetterToUpperCase } from "../../utils/ChangeFirstLetterToUpperCase";
 
 type ChildListProps = {
   logo?: React.ReactNode;
@@ -49,7 +50,7 @@ const SelectBox = ({
             .filter((child) =>
               child.name.toLowerCase().includes(searchValue.toLowerCase())
             )
-            .map((list, index) => (
+            .map((list: any, index) => (
               <div
                 key={index}
                 className={` flex items-center justify-between cursor-pointer p-[16px] rounded-[4px] border-grey-1 border-[1px] transition-all duration-300 ease-in-out ${
@@ -62,7 +63,7 @@ const SelectBox = ({
                 }}
               >
                 <div className="flex items-center gap-x-[11px]">
-                  {list.logo && (
+                  {list.logo ? (
                     <div
                       className={`w-[30px] h-[30px] rounded-[50%] flex items-center justify-center ${
                         selectedIndex === index ? "bg-orange-2" : "bg-grey-1"
@@ -70,14 +71,25 @@ const SelectBox = ({
                     >
                       {list.logo}
                     </div>
+                  ) : (
+                    <img
+                      src={list?.image_url}
+                      alt="logo"
+                      className="h-[32px] w-[32px] rounded-[50%]"
+                    />
                   )}
-                  <div>
+                  <div className="flex flex-col gap-y-[3px]">
                     <p className=" text-black-2 text-[0.875rem] leading-[18px] ">
-                      {list.name}
+                      {changeFirstLetterToUpperCase(list?.name)}
                     </p>
                     {list.code && (
                       <p className="text-black-3 text-[0.875rem] leading-[12px]">
                         {list.code}
+                      </p>
+                    )}
+                    {list.chain && (
+                      <p className="text-black-3 text-[0.875rem] leading-[12px]">
+                        {list.chain}
                       </p>
                     )}
                   </div>

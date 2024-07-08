@@ -8,29 +8,29 @@ import {
   SnackbarCloseButton,
   StyledMaterialDesignContent,
 } from "./utils/SnackbarProvider";
-// import { MoonPayProvider } from "@moonpay/moonpay-react";
+import { MoonPayProvider } from "@moonpay/moonpay-react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  // <MoonPayProvider apiKey="pk_test_5CfXVqDxiCHY45HdTEUlmhOQhsws4" debug>
-  <Provider store={store}>
-    <SnackbarProvider
-      Components={{
-        success: StyledMaterialDesignContent,
-        error: StyledMaterialDesignContent,
-      }}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "center",
-      }}
-      hideIconVariant
-      autoHideDuration={5000}
-      action={(snackbarId) => <SnackbarCloseButton snackbarId={snackbarId} />}
-    >
-      <App />
-    </SnackbarProvider>
-  </Provider>
-  // </MoonPayProvider>
+  <MoonPayProvider apiKey="pk_test_5CfXVqDxiCHY45HdTEUlmhOQhsws4" debug>
+    <Provider store={store}>
+      <SnackbarProvider
+        Components={{
+          success: StyledMaterialDesignContent,
+          error: StyledMaterialDesignContent,
+        }}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        hideIconVariant
+        autoHideDuration={5000}
+        action={(snackbarId) => <SnackbarCloseButton snackbarId={snackbarId} />}
+      >
+        <App />
+      </SnackbarProvider>
+    </Provider>
+  </MoonPayProvider>
 );

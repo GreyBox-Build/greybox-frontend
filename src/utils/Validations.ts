@@ -15,6 +15,7 @@ export const createUserSchema = z.object({
     ),
   currency: z.string().min(1, { message: "Currency is required" }),
   country: z.string().min(1, { message: "Country name is required" }),
+  chain: z.string().min(1, { message: "Select chain" }),
 });
 
 export const obtainTokenSchema = z.object({
@@ -61,7 +62,7 @@ export const withdrawViaMobileSchema = z.object({
   amount: z
     .string()
     .refine(
-      (amount) => parseFloat(amount) >= 1406,
+      (amount) => parseFloat(amount) >= 1,
       "Amount must not be less than 1406"
     ),
 });

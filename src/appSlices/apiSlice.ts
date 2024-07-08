@@ -14,7 +14,8 @@ export const apiSlice = createApi({
         endpoint !== "createUser" &&
         endpoint !== "obtainToken" &&
         endpoint !== "forgetPassword" &&
-        endpoint !== "resetPassword"
+        endpoint !== "resetPassword" &&
+        endpoint !== "getChains"
       ) {
         headers.set("Authorization", `Bearer ${token}`);
       }
@@ -28,6 +29,11 @@ export const apiSlice = createApi({
         url: "/v2/user/register",
         method: "POST",
         body: user,
+      }),
+    }),
+    getChains: builder.query({
+      query: () => ({
+        url: "/v1/chains",
       }),
     }),
     obtainToken: builder.mutation({
@@ -78,6 +84,7 @@ export const apiSlice = createApi({
 
 export const {
   useCreateUserMutation,
+  useGetChainsQuery,
   useObtainTokenMutation,
   useGetAuthUserQuery,
   useOnrampQuery,
@@ -86,27 +93,3 @@ export const {
   useOfframpMutation,
   useGetTransactionQuery,
 } = apiSlice;
-
-// {
-//   "data": {
-//       "nextPage": "",
-//       "prevPage": "",
-//       "result": [
-//           {
-//               "address": "0xcad5797bbe1b64282c316adbc9723b832d83919c",
-//               "amount": "3",
-//               "blockNumber": 26297631,
-//               "chain": "celo-mainnet",
-//               "counterAddress": "0x5aa4b6e1a09afa5d9b639752f21dad6965798dab",
-//               "hash": "0x8c434bd29a77764a110dbcae0c34edfeae2341ebfaaab153de852a8614cc1bc9",
-//               "timestamp": 1719159354000,
-//               "tokenAddress": "0x765de816845861e75a25fca122bb6898b8b1282a",
-//               "transactionIndex": 4,
-//               "transactionSubtype": "incoming",
-//               "transactionType": "fungible"
-//           }
-//       ]
-//   },
-//   "errors": false,
-//   "status": "retrieved transactions successfully"
-// }

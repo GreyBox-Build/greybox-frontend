@@ -4,14 +4,16 @@ import AppLayout from "./AppLayout";
 import { InputLabel, TextInput } from "../../components/inputs/TextInput";
 import { FormButton } from "../../components/buttons/FormButton";
 import { useForm } from "react-hook-form";
-import { useOnrampQuery } from "../../appSlices/apiSlice";
+import { useGetAuthUserQuery, useOnrampQuery } from "../../appSlices/apiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { depositViaMobileSchema } from "../../utils/Validations";
+import { MoonPayBuyWidget } from "@moonpay/moonpay-react";
 
 const MobileMoneyDeposit = () => {
   const navigate = useNavigate();
 
   const { currentData: onrampInfo } = useOnrampQuery({});
+  const { currentData: user } = useGetAuthUserQuery({});
   const { control, handleSubmit } = useForm({
     defaultValues: {
       amount: "0",
@@ -26,40 +28,68 @@ const MobileMoneyDeposit = () => {
       "_self"
     );
   };
+
+  // const handleGetSignature = async (url: string): Promise<any> => {
+  //   const signature = await fetch(
+  //     `https://YOUR_API_DOMAIN.com/sign-url?url=${url}`
+  //   );
+  //   return signature;
+  // };
+
   return (
     <AppLayout
       child={
         <div className="pt-[51px] w-full md:w-[50.33%] lg:w-[45.33%] min-h-[100vh] bg-grey-1">
-          <div className="flex items-center justify-center relative ">
-            <span className="absolute left-[24px]" onClick={() => navigate(-1)}>
-              <CancelIcon />
-            </span>
-            <h2 className=" text-black text-[1.5rem] font-[600]">
-              Deposit Via Mobile Money
-            </h2>
-          </div>
-          <form
-            className="mt-[29px] px-[24px] pb-[80px]"
-            onSubmit={handleSubmit(handleDepositViaMobileMoney)}
-          >
-            <section className="flex flex-col gap-y-[32px]">
-              <div>
-                <InputLabel text={`Enter amount you want to receive in cUSD`} />
-                <TextInput
-                  name="amount"
-                  control={control}
-                  placeholder="0"
-                  type="number"
-                  step={1}
-                />
-              </div>
-            </section>
-            <FormButton
-              label="Submit Request"
-              extraClass="mt-[50px]"
-              onClick={() => {}}
+          {onrampInfo?.data?.network === "XLM" ? (
+            <MoonPayBuyWidget
+              variant="overlay"
+              baseCurrencyCode={user?.data?.personal_details?.currency?.toLowerCase()}
+              baseCurrencyAmount="100"
+              defaultCurrencyCode={onrampInfo?.data?.network?.toLowerCase()}
+              // onUrlSignatureRequested={handleGetSignature}
+              // walletAddress={onrampInfo?.data?.wallet_address}
+              onCloseOverlay={() => navigate(-1)}
+              visible
             />
-          </form>
+          ) : (
+            <>
+              <div className="flex items-center justify-center relative ">
+                <span
+                  className="absolute left-[24px]"
+                  onClick={() => navigate(-1)}
+                >
+                  <CancelIcon />
+                </span>
+                <h2 className=" text-black text-[1.5rem] font-[600]">
+                  Deposit Via Mobile Money
+                </h2>
+              </div>
+              <form
+                className="mt-[29px] px-[24px] pb-[80px]"
+                onSubmit={handleSubmit(handleDepositViaMobileMoney)}
+              >
+                <section className="flex flex-col gap-y-[32px]">
+                  <div>
+                    <InputLabel
+                      text={`Enter amount you want to receive in cUSD`}
+                    />
+                    <TextInput
+                      name="amount"
+                      control={control}
+                      placeholder="0"
+                      type="number"
+                      step={1}
+                    />
+                  </div>
+                </section>
+                <FormButton
+                  label="Submit Request"
+                  extraClass="mt-[50px]"
+                  onClick={() => {}}
+                />
+              </form>
+            </>
+          )}
         </div>
       }
     />

@@ -16,7 +16,7 @@ const DepositOption = () => {
             onClick={() => navigate("/deposit-via-mobile-money")}
           />
           <FlatButton
-            label="Deposit Bank Transfer"
+            label="Deposit Via Bank Transfer"
             extraClass="bg-[transparent] mb-[8px]"
             onClick={() => navigate("/deposit-via-bank-transfer")}
           />
