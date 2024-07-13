@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   reducerPath: "api",
   refetchOnReconnect: true,
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_BASE_URL,
+    baseUrl: "http://ec2-34-227-150-136.compute-1.amazonaws.com/api",
     prepareHeaders: (headers, { endpoint }) => {
       const token = localStorage.getItem("access_token");
 
