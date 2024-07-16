@@ -31,7 +31,7 @@ const MobileMoneyDeposit = () => {
 
   // const handleGetSignature = async (url: string): Promise<any> => {
   //   const signature = await fetch(
-  //     `https://YOUR_API_DOMAIN.com/sign-url?url=${url}`
+  //     `http://ec2-34-227-150-136.compute-1.amazonaws.com/api/v1/transaction/sign-url?url=${url}`
   //   );
   //   return signature;
   // };
