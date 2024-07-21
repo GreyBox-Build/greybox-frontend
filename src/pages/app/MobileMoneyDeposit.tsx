@@ -4,7 +4,11 @@ import AppLayout from "./AppLayout";
 import { InputLabel, TextInput } from "../../components/inputs/TextInput";
 import { FormButton } from "../../components/buttons/FormButton";
 import { useForm } from "react-hook-form";
-import { useGetAuthUserQuery, useOnrampQuery } from "../../appSlices/apiSlice";
+import {
+  useGetAuthUserQuery,
+  useOnrampQuery,
+  // useSignUrlMutation,
+} from "../../appSlices/apiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { depositViaMobileSchema } from "../../utils/Validations";
 import { MoonPayBuyWidget } from "@moonpay/moonpay-react";
@@ -14,6 +18,7 @@ const MobileMoneyDeposit = () => {
 
   const { currentData: onrampInfo } = useOnrampQuery({});
   const { currentData: user } = useGetAuthUserQuery({});
+  // const [signUrl] = useSignUrlMutation();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       amount: "0",
@@ -30,10 +35,12 @@ const MobileMoneyDeposit = () => {
   };
 
   // const handleGetSignature = async (url: string): Promise<any> => {
-  //   const signature = await fetch(
-  //     `http://ec2-34-227-150-136.compute-1.amazonaws.com/api/v1/transaction/sign-url?url=${url}`
-  //   );
-  //   return signature;
+  //   console.log(url);
+  //   const signature = await signUrl({
+  //     url,
+  //   }).unwrap();
+  //   console.log(signature?.signedUrl);
+  //   return signature?.signedUrl;
   // };
 
   return (

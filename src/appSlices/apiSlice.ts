@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   reducerPath: "api",
   refetchOnReconnect: true,
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://ec2-34-227-150-136.compute-1.amazonaws.com/api",
+    baseUrl: "https://apis.greyboxpay.com/api",
     prepareHeaders: (headers, { endpoint }) => {
       const token = localStorage.getItem("access_token");
 
@@ -50,6 +50,13 @@ export const apiSlice = createApi({
         body: details,
       }),
     }),
+    signUrl: builder.mutation({
+      query: (url) => ({
+        url: "/v1/transaction/sign-url",
+        method: "POST",
+        body: url,
+      }),
+    }),
     getAuthUser: builder.query({
       query: () => ({
         url: "/v1/auth/user",
@@ -92,4 +99,5 @@ export const {
   useResetPasswordMutation,
   useOfframpMutation,
   useGetTransactionQuery,
+  useSignUrlMutation,
 } = apiSlice;
